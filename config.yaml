@@ -1,3 +1,4 @@
 bind-addr: 0.0.0.0:8080
-auth: ${PASSWORD}
+auth: password
+password: ${PASSWORD}
 cert: false
