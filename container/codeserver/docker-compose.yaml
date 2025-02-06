@@ -1,0 +1,29 @@
+---
+# Documentation: https://github.com/linuxserver/docker-code-server
+services:
+  codeserver:
+    image: lscr.io/linuxserver/code-server:latest
+    container_name: codeserver
+    privileged: true
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=${TZ}
+      - PASSWORD=password #optional
+      - HASHED_PASSWORD= #optional
+      - SUDO_PASSWORD=password #optional
+      - SUDO_PASSWORD_HASH= #optional
+      - PROXY_DOMAIN=code-code.${PROXYDOMAIN} #Subdomain 
+      - DEFAULT_WORKSPACE=/workspace #optional
+      - DOCKER_MODS=linuxserver/mods:universal-docker-in-docker|linuxserver/mods:universal-package-install
+      - INSTALL_PACKAGES=rsync|git|git-lfs||openconnect #ADD apt packages here
+     # - INSTALL_PIP_PACKAGES=apprise
+    volumes:
+      - ${DOCKERPATH}/codeserver/config:/config
+      - ${DATAPATH}/:/workspace
+    ports:
+      - 8443:8443
+    restart: unless-stopped
+    logging:
+      options:
+        max-size: 50m
