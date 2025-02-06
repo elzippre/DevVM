@@ -1,6 +1,6 @@
 # Please choose the package for your distro here (under Assets):
 # https://github.com/kasmtech/KasmVNC/releases
-wget <package_url>
+wget https://github.com/kasmtech/KasmVNC/releases/download/v1.3.3/kasmvncserver_noble_1.3.3_amd64.deb
 
 sudo apt-get install ./kasmvncserver_*.deb
 
